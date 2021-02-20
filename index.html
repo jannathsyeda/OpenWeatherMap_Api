@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Temperature Hot</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            background: url(images/bg-image.jpg) no-repeat;
+            background-size: cover;
+            height: 100vh;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <form class="col-md-6 m-auto py-5">
+            <div class="input-group mb-3">
+                <input id="search-action" type="text" class="form-control" placeholder="Enter a location for Weather ...">
+                <div class="input-group-append">
+                    <button id="submit" type="button" class="btn btn-danger">Search</button>
+                </div>
+            </div>
+        </form>
+        <div class="weather-status text-white text-center">
+            <img src="https://openweathermap.org/img/wn/02d@2x.png" alt="">
+            <h1>Dhaka</h1>
+            <h3><span>38.06</span>&deg;C</h3>
+            <h1 class="lead">Clouds</h1>
+        </div>
+    </div>
+
+    <script>
+
+document.getElementById('submit').addEventListener('click',function(){
+    var searchInputValue=document.getElementById('search-action').value;
+    console.log(searchInputValue);
+    const apiKey='0b31a13e61be7677ecaff48653cb1225';
+    fetch('https://api.openweathermap.org/data/2.5/weather?q=${searchInputValue}&appid=01ead5253dcb91ba3ec29ced3385efa3')
+                .then((response) => response.json())
+                .then((json) => console.log(json))
+                .catch(error=>alert('plz try again later'));
+
+
+
+})
+       
+
+
+
+
+    </script>
+</body>
+
+</html>
