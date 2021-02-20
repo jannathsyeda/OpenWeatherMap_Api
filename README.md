@@ -11,7 +11,7 @@
     <li><b>OpenWeatherMap Api </b></li>
     <li><b>Fetching data</b></li>
     <li><b>Api key</b></li>
-    <li><b>Showing api's elements</b></li>
+    <li><b>Get api's elements</b></li>
     
 </ul>
 
