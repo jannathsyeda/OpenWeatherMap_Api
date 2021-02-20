@@ -7,10 +7,11 @@
 
 <ul>
 <h2>Core Features:</h2> 
+    <li><b>JS (DOM)</b></li>
     <li><b>OpenWeatherMap Api </b></li>
-    <li><b>fetching data</b></li>
-    <li><b>api key</b></li>
-    <li><b>showing api's elements</b></li>
+    <li><b>Fetching data</b></li>
+    <li><b>Api key</b></li>
+    <li><b>Showing api's elements</b></li>
     
 </ul>
 
