@@ -29,10 +29,13 @@
             </div>
         </form>
         <div class="weather-status text-white text-center">
-            <img src="https://openweathermap.org/img/wn/02d@2x.png" alt="">
-            <h1>Dhaka</h1>
-            <h3><span>38.06</span>&deg;C</h3>
-            <h1 class="lead">Clouds</h1>
+            <img id="WeatherIconStatus" src="https://openweathermap.org/img/wn/02d@2x.png" alt="">
+            <h1 id="city">Result City</h1>
+            <h3><span  id="Temperature"></span> <span>&deg;C Temperature</span></h3>
+
+            <h1 id="status" class="lead">Status</h1>
+            <h3><span  id="feels"></span><span>&deg;C feels like</span></h3>
+
         </div>
     </div>
 
@@ -40,11 +43,25 @@
 
 document.getElementById('submit').addEventListener('click',function(){
     var searchInputValue=document.getElementById('search-action').value;
-    console.log(searchInputValue);
+    // console.log(searchInputValue);
     const apiKey='0b31a13e61be7677ecaff48653cb1225';
-    fetch('https://api.openweathermap.org/data/2.5/weather?q=${searchInputValue}&appid=01ead5253dcb91ba3ec29ced3385efa3')
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${searchInputValue}&appid=${apiKey}`)
                 .then((response) => response.json())
-                .then((json) => console.log(json))
+                .then(data =>{
+                    // const d=data;
+                    console.log(data);
+                    // const weatherArrayObj=data.main;
+                   document.getElementById('Temperature').innerText=data.main.temp;
+               document.getElementById('city').innerText=data.name;
+               const iconStatus=data.weather[0].icon;
+               document.getElementById("WeatherIconStatus").src =`http://openweathermap.org/img/wn/${iconStatus}@2x.png`
+               document.getElementById('status').innerText= data.weather[0].main;
+               document.getElementById('feels').innerText= data.main.feels_like;
+
+
+                } )
+               
+
                 .catch(error=>alert('plz try again later'));
 
 
