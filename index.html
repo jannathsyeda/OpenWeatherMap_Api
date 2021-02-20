@@ -45,7 +45,7 @@ document.getElementById('submit').addEventListener('click',function(){
     var searchInputValue=document.getElementById('search-action').value;
     // console.log(searchInputValue);
     const apiKey='0b31a13e61be7677ecaff48653cb1225';
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${searchInputValue}&appid=${apiKey}`)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${searchInputValue}&units=metric&appid=${apiKey}`)
                 .then((response) => response.json())
                 .then(data =>{
                     // const d=data;
