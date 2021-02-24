@@ -1,83 +1,53 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <title>Temperature</title>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <style>
-        body {
-            background: url(images/bg-image.jpg) no-repeat;
-            background-size: cover;
-            height: 100vh;
-        }
-    </style>
-</head>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<body>
+  <body>
     <div class="container">
-        <form class="col-md-6 m-auto py-5">
-            <div class="input-group mb-3">
-                <input id="search-action" type="text" class="form-control" placeholder="Enter a location for Weather ...">
-                <div class="input-group-append">
-                    <button id="submit" type="button" class="btn btn-danger">Search</button>
-                </div>
-            </div>
-        </form>
-        <div class="weather-status text-white text-center">
-            <img id="WeatherIconStatus" src="https://openweathermap.org/img/wn/02d@2x.png" alt="">
-            <h1 id="city">Result City</h1>
-            <h3><span  id="Temperature"></span> <span>&deg;C Temperature</span></h3>
-
-            <h1 id="status" class="lead">Status</h1>
-            <h3><span  id="feels"></span><span>&deg;C feels like</span></h3>
-
+      <form class="col-md-6 m-auto py-5">
+        <div class="input-group mb-3">
+          <input
+            id="search-action"
+            type="text"
+            class="form-control"
+            placeholder="Enter a location for Weather ..."
+          />
+          <div class="input-group-append">
+            <button id="submit" type="button" class="btn btn-danger">
+              Search
+            </button>
+          </div>
         </div>
+      </form>
+      <div class="weather-status text-white text-center">
+        <img
+          id="WeatherIconStatus"
+          src="https://openweathermap.org/img/wn/02d@2x.png"
+          alt=""
+        />
+        <h1 id="city">Result City</h1>
+        <h3><span id="Temperature"></span> <span>&deg;C Temperature</span></h3>
+
+        <h1 id="status" class="lead">Status</h1>
+        <h3><span id="feels"></span><span>&deg;C feels like</span></h3>
+      </div>
     </div>
 
-    <script>
-const api= { 
-
-    key: '0b31a13e61be7677ecaff48653cb1225',
-    base: 'https://api.openweathermap.org/data/2.5/weather'
-}
-
-    document.getElementById('submit').addEventListener('click',function(){
-    var searchInputValue=document.getElementById('search-action').value;
-    // console.log(searchInputValue);
-    // const apiKey='0b31a13e61be7677ecaff48653cb1225';
-    fetch(`${api.base}?q=${searchInputValue}&units=metric&appid=${api.key}`)
-                .then((response) => response.json())
-                .then(data =>{
-                    // const d=data;
-                    console.log(data);
-                    // const weatherArrayObj=data.main;
-                   document.getElementById('Temperature').innerText=data.main.temp;
-               document.getElementById('city').innerText=data.name;
-               const iconStatus=data.weather[0].icon;
-               document.getElementById("WeatherIconStatus").src =`http://openweathermap.org/img/wn/${iconStatus}@2x.png`
-               document.getElementById('status').innerText= data.weather[0].main;
-               document.getElementById('feels').innerText= data.main.feels_like;
-
-
-                } )
-               
-
-                .catch(error=>alert('city not found'));
-
-
-
-})
-       
-
-
-
-
-    </script>
-</body>
-
+    <script src="script.js"></script>
+  </body>
 </html>
